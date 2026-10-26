@@ -11,6 +11,7 @@ from discord import app_commands
 from discord import Embed
 from discord.ui import Button, View
 from dotenv import load_dotenv
+import asyncio
 
 
 intents = discord.Intents.all()

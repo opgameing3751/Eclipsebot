@@ -3,7 +3,7 @@ from src.imports import *
 
 version = "0.1"
 load_dotenv("data/config/config.env")
-TICKET_CREATE_CHANNEL = os.getenv("Ticket_channel")
+TICKET_CREATE_CHANNEL = int(os.getenv("Ticket_channel"))
 
 
 

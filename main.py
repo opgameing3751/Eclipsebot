@@ -26,7 +26,11 @@ print("--------Starting--------")
 load_dotenv("data/config/config.env")
 
 TOKEN = os.getenv("TOKEN")
-print("loaded token: " + TOKEN)
+try:
+    print("loaded token: " + TOKEN)
+except Exception as e:
+    print("token is invalid, please check and try again")
+    exit()
 
 if TOKEN == None:
     print("token is invalid, please check and try again")
