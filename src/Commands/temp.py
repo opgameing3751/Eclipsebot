@@ -414,5 +414,19 @@ async def ticket(interaction: discord.Integration):
     else:
         modal.on_submit = on_submit_Not_Whitelisted
         
-
+@bot.tree.command(name='add', description='Add a user to the ticket channel by their user ID')
+@app_commands.guilds(discord.Object(id=1174428417702248528))
+@app_commands.default_permissions(manage_channels=True)
+@app_commands.describe(user_id="The ID of the user to add to the ticket")
+async def add(interaction: discord.Integration, user_id: discord.Member):
+    if interaction.channel.name.startswith('ticket-'):
+        if not user_id:
+            await interaction.response.send_message("User not found.", ephemeral=True)
+            return
+        
+        await interaction.channel.set_permissions(user_id, read_messages=True, send_messages=True)
+        await interaction.response.send_message(f"User <@{user_id.id}> has been added to the ticket.", ephemeral=False)
+    else:
+        await interaction.response.send_message("This command can only be used in a ticket channel.", ephemeral=True)
+        
     

@@ -3,9 +3,16 @@ from src.imports import *
 
 version = "0.1"
 load_dotenv("data/config/config.env")
-TICKET_CREATE_CHANNEL = int(os.getenv("Ticket_channel"))
+try:
+    TICKET_CREATE_CHANNEL = int(os.getenv("Ticket_channel"))
 
+except:
+    TICKET_CREATE_CHANNEL = False
 
+try:
+    Whitelist_role = int(os.getenv("whitelist_role"))
+except:
+    Whitelist_role = None
 
 
 class TicketManager:
